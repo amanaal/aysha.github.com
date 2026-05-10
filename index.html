@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Aysha Manaal Zawahir — Social Media & Digital Marketing Specialist</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Syne:wght@400;500;600;700;800&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --bg:#f7f4ef; --bg2:#f0ece4; --bg3:#e8e2d8;
+  --ink:#1a1714; --ink2:#3a3530; --muted:#8a8278;
+  --rose:#b85c6e; --rose2:#d4788a; --rose-light:#f2d6dc;
+  --border:rgba(26,23,20,0.1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:'Syne',sans-serif;overflow-x:hidden;cursor:none}
+.cursor{width:10px;height:10px;background:var(--rose);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);mix-blend-mode:multiply;transition:width .2s,height .2s}
+.cursor-ring{width:36px;height:36px;border:1.5px solid var(--rose);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:left .12s ease-out,top .12s ease-out,width .2s,height .2s}
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:900}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;justify-content:space-between;align-items:center;padding:20px 60px;background:rgba(247,244,239,0.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
+.nav-name{font-family:'Playfair Display',serif;font-size:.95rem;font-style:italic;color:var(--rose)}
+.nav-links{display:flex;gap:32px}
+.nav-links a{font-size:.63rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .3s;font-weight:600}
+.nav-links a:hover{color:var(--rose)}
+
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;position:relative;overflow:hidden}
+.hero-left{display:flex;flex-direction:column;justify-content:flex-end;padding:160px 60px 80px;border-right:1px solid var(--border)}
+.hero-right{background:var(--bg2);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.hero-photo{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
+.hero-photo-placeholder{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;color:var(--muted)}
+
+.hero-tag{font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:var(--rose);margin-bottom:26px;display:flex;align-items:center;gap:12px;animation:fadeUp .7s ease both}
+.hero-tag::before{content:'';width:36px;height:1px;background:var(--rose)}
+.hero-name{font-family:'Playfair Display',serif;font-size:clamp(3rem,5.5vw,5.6rem);font-weight:900;line-height:.93;color:var(--ink);animation:fadeUp .7s .1s ease both}
+.hero-name em{font-style:italic;color:var(--rose);display:block}
+.hero-role{font-size:.7rem;letter-spacing:.25em;text-transform:uppercase;color:var(--muted);margin-top:22px;margin-bottom:44px;font-weight:600;animation:fadeUp .7s .2s ease both}
+.hero-contact{display:flex;flex-direction:column;gap:7px;animation:fadeUp .7s .3s ease both}
+.hero-contact a{font-family:'DM Mono',monospace;font-size:.69rem;color:var(--muted);text-decoration:none;transition:color .3s}
+.hero-contact a:hover{color:var(--rose)}
+.hero-right-label{position:absolute;bottom:36px;right:36px;font-family:'DM Mono',monospace;font-size:.52rem;letter-spacing:.25em;text-transform:uppercase;color:var(--muted);writing-mode:vertical-rl}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .65s ease,transform .65s ease}
+.reveal.visible{opacity:1;transform:none}
+
+.section{padding:96px 60px}
+.section-inner{max-width:1200px;margin:0 auto}
+.lbl{font-family:'DM Mono',monospace;font-size:.57rem;letter-spacing:.35em;text-transform:uppercase;color:var(--rose);margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.lbl::after{content:'';flex:0 0 46px;height:1px;background:var(--rose);opacity:.4}
+.hdg{font-family:'Playfair Display',serif;font-size:clamp(2rem,3.6vw,3.4rem);font-weight:700;line-height:1.06;color:var(--ink)}
+.hdg em{font-style:italic;color:var(--rose)}
+
+.about-sec{background:var(--bg);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:90px;align-items:start;margin-top:56px}
+.about-body{font-size:.94rem;line-height:1.9;color:var(--ink2)}
+.about-body p{margin-bottom:18px}
+.lang-block{margin-top:30px;padding:20px 24px;background:var(--bg2);border:1px solid var(--border);border-left:3px solid var(--rose)}
+.lang-lbl{font-family:'DM Mono',monospace;font-size:.56rem;letter-spacing:.25em;text-transform:uppercase;color:var(--rose);margin-bottom:8px}
+.lang-txt{font-size:.78rem;color:var(--ink2);line-height:1.65}
+.skills-box{background:var(--bg2);border:1px solid var(--border)}
+.skill-row{display:flex;align-items:center;gap:16px;padding:18px 24px;border-bottom:1px solid var(--border);transition:background .3s}
+.skill-row:last-child{border:none}
+.skill-row:hover{background:var(--bg3)}
+.sk-num{font-family:'DM Mono',monospace;font-size:.53rem;color:var(--rose);opacity:.7;min-width:24px}
+.sk-name{font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:var(--ink2)}
+.tools-lbl{font-family:'DM Mono',monospace;font-size:.56rem;letter-spacing:.28em;text-transform:uppercase;color:var(--muted);margin:26px 0 13px}
+.tools-wrap{display:flex;flex-wrap:wrap;gap:8px}
+.tool-tag{padding:6px 15px;border:1px solid var(--border);font-size:.66rem;letter-spacing:.08em;color:var(--ink2);background:var(--bg);transition:all .3s;font-weight:600}
+.tool-tag:hover{border-color:var(--rose);background:var(--rose-light);color:var(--rose)}
+
+.khalid-sec{background:var(--ink);color:#f0ece4}
+.khalid-sec .lbl{color:var(--rose2)}
+.khalid-sec .lbl::after{background:var(--rose2)}
+.khalid-sec .hdg{color:#f0ece4}
+.kh-intro{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:start;margin-top:52px;margin-bottom:56px}
+.kh-desc{font-size:.86rem;color:#a09890;line-height:1.88;margin-top:16px}
+.kh-desc strong{color:#d4b896}
+.kh-platforms{display:flex;flex-direction:column}
+.pl-row{display:flex;align-items:center;justify-content:space-between;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.07)}
+.pl-row:last-child{border:none}
+.pl-name{font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:#706860}
+.pl-badge{font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;padding:4px 12px;border-radius:100px;font-weight:700}
+.badge-managed{background:rgba(184,92,110,.18);color:var(--rose2);border:1px solid rgba(184,92,110,.3)}
+.badge-linkedin{background:rgba(10,102,194,.18);color:#7ab3e0;border:1px solid rgba(10,102,194,.3)}
+.li-note{background:#1a1e2a;border:1px solid rgba(100,150,210,.2);padding:24px 26px;margin-bottom:52px;display:flex;align-items:flex-start;gap:16px}
+.li-icon{font-size:1.3rem;flex-shrink:0;margin-top:2px}
+.li-txt{font-size:.78rem;color:#a09890;line-height:1.75}
+.li-txt strong{color:#7ab3e0}
+
+.vid-cat{margin-bottom:48px}
+.cat-lbl{font-family:'DM Mono',monospace;font-size:.57rem;letter-spacing:.28em;text-transform:uppercase;color:var(--rose2);margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,.07);display:flex;align-items:center;gap:10px}
+.cat-lbl::before{content:'';width:26px;height:1px;background:var(--rose2);opacity:.5}
+.vid-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.vid-card{background:#201f1b;border:1px solid rgba(255,255,255,.06);overflow:hidden;transition:border-color .3s,transform .3s;position:relative}
+.vid-card:hover{border-color:rgba(184,92,110,.35);transform:translateY(-3px)}
+.vid-thumb{width:100%;aspect-ratio:16/9;background:#141310;position:relative;overflow:hidden;display:block}
+.vid-thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}
+.vid-card:hover .vid-thumb img{transform:scale(1.04)}
+.vid-thumb-overlay{position:absolute;inset:0;background:rgba(0,0,0,.35);display:flex;align-items:center;justify-content:center;transition:background .3s}
+.vid-card:hover .vid-thumb-overlay{background:rgba(0,0,0,.2)}
+.play-btn{width:46px;height:46px;border-radius:50%;background:rgba(184,92,110,.9);display:flex;align-items:center;justify-content:center;transition:transform .3s,background .3s}
+.vid-card:hover .play-btn{transform:scale(1.1);background:var(--rose2)}
+.play-btn svg{width:16px;height:16px;fill:#fff;margin-left:3px}
+.vid-info{padding:20px 22px}
+.vc-platform{font-family:'DM Mono',monospace;font-size:.52rem;letter-spacing:.22em;text-transform:uppercase;color:#585048;margin-bottom:9px}
+.vc-title{font-family:'Playfair Display',serif;font-size:.92rem;font-style:italic;color:#e8e2d8;line-height:1.4;margin-bottom:8px}
+.vc-link{display:inline-flex;align-items:center;gap:6px;margin-top:2px;font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;color:var(--rose2);text-decoration:none;transition:gap .2s;font-weight:600}
+.vc-link:hover{gap:10px}
+.vc-link svg{width:10px;height:10px}
+
+.clients-sec{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.client-intro{max-width:640px;font-size:.86rem;color:var(--muted);line-height:1.85;margin-top:16px;margin-bottom:52px}
+.logos-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:2px;background:var(--border);border:1px solid var(--border)}
+.logo-cell{background:var(--bg);padding:18px 12px;display:flex;align-items:center;justify-content:center;transition:background .3s;min-height:80px}
+.logo-cell:hover{background:var(--bg3)}
+.logo-img{max-width:100px;max-height:44px;width:auto;height:auto;object-fit:contain;filter:grayscale(1);opacity:.65;transition:filter .3s,opacity .3s}
+.logo-cell:hover .logo-img{filter:grayscale(0);opacity:1}
+.logo-fallback{font-size:.58rem;letter-spacing:.07em;text-transform:uppercase;font-weight:700;color:var(--ink2);text-align:center;line-height:1.4}
+
+.case-sec{background:var(--bg)}
+.case-sec .hdg{margin-bottom:40px}
+.case-card{border:1px solid var(--border);margin-bottom:2px;background:var(--bg2);transition:background .3s}
+.case-card.open{background:var(--bg3)}
+.case-hdr{display:flex;justify-content:space-between;align-items:center;padding:26px 32px;cursor:pointer;user-select:none}
+.case-client{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:var(--ink)}
+.case-industry{font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-top:4px}
+.case-toggle{font-size:1.4rem;color:var(--rose);transition:transform .3s;font-weight:300}
+.case-card.open .case-toggle{transform:rotate(45deg)}
+.case-body{display:none;padding:0 32px 32px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:36px}
+.case-card:not(.open) .case-body{display:none}
+.col-lbl{font-family:'DM Mono',monospace;font-size:.52rem;letter-spacing:.25em;text-transform:uppercase;color:var(--rose);margin-bottom:12px}
+.col-body{font-size:.82rem;color:var(--ink2);line-height:1.78}
+.col-body ul{padding-left:16px}
+.col-body li{margin-bottom:6px}
+.res-item{margin-bottom:18px}
+.res-num{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:900;color:var(--rose);line-height:1}
+.res-desc{font-size:.74rem;color:var(--muted);margin-top:4px;line-height:1.55}
+
+.testi-sec{background:var(--bg2)}
+.testi-intro{font-size:.86rem;color:var(--muted);max-width:580px;line-height:1.8;margin-top:14px;margin-bottom:48px}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border)}
+.testi-card{background:var(--bg);padding:36px 32px;transition:background .3s}
+.testi-card:hover{background:var(--bg3)}
+.testi-q{font-family:'Playfair Display',serif;font-size:2.8rem;color:var(--rose);opacity:.25;line-height:.8;margin-bottom:14px}
+.testi-txt{font-size:.82rem;color:var(--ink2);line-height:1.78;margin-bottom:22px;font-style:italic}
+.testi-name{font-size:.74rem;font-weight:700;color:var(--ink);letter-spacing:.04em}
+.testi-co{font-family:'DM Mono',monospace;font-size:.55rem;color:var(--muted);margin-top:4px;letter-spacing:.06em}
+
+.why-sec{background:var(--ink);color:#f0ece4}
+.why-sec .lbl{color:var(--rose2)}
+.why-sec .lbl::after{background:var(--rose2)}
+.why-sec .hdg{color:#f0ece4}
+.why-body{font-size:.88rem;color:#a09890;line-height:1.92;max-width:760px;margin-top:28px}
+.why-tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:36px}
+.why-tag{padding:9px 20px;border:1px solid rgba(255,255,255,.1);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:#a09890;transition:all .3s;font-weight:600}
+.why-tag:hover{border-color:var(--rose2);color:var(--rose2)}
+
+.cta-sec{background:var(--rose);padding:96px 60px;text-align:center}
+.cta-hdg{font-family:'Playfair Display',serif;font-size:clamp(2.4rem,4.5vw,4.2rem);font-weight:900;color:#fff;line-height:1.05;margin-bottom:18px}
+.cta-hdg em{font-style:italic;opacity:.85}
+.cta-sub{font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:52px}
+.cta-details{display:flex;justify-content:center;flex-wrap:wrap;gap:40px}
+.cta-item{text-align:left}
+.cta-item-lbl{display:block;font-family:'DM Mono',monospace;font-size:.52rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:6px}
+.cta-item-val a{font-size:.82rem;color:#fff;text-decoration:none;font-weight:600;transition:opacity .3s}
+.cta-item-val a:hover{opacity:.75}
+
+footer{background:var(--ink);padding:32px 60px;display:flex;justify-content:space-between;align-items:center}
+.foot-name{font-family:'Playfair Display',serif;font-size:.85rem;font-style:italic;color:var(--rose2)}
+.foot-copy{font-family:'DM Mono',monospace;font-size:.52rem;letter-spacing:.12em;color:#504840}
+</style>
+</head>
+<body>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="ring"></div>
+
+<nav>
+  <div class="nav-name">Aysha Manaal</div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#work">Work</a>
+    <a href="#clients">Clients</a>
+    <a href="#cases">Cases</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-tag">Social Media & Digital Marketing</div>
+    <h1 class="hero-name">Aysha<em>Manaal.</em></h1>
+    <div class="hero-role">Specialist · Dubai, UAE</div>
+    <div class="hero-contact">
+      <a href="mailto:azawahir96@gmail.com">azawahir96@gmail.com</a>
+      <a href="tel:+971561209503">+971 56 120 9503</a>
+      <a href="https://instagram.com/_manaal_96" target="_blank">@_manaal_96</a>
+    </div>
+  </div>
+  <div class="hero-right">
+
+    <!--
+    ================================================================
+    YOUR PROFILE PHOTO — replace the src below
+    ================================================================
+    Google Drive: Share image → copy link → change URL from:
+      https://drive.google.com/file/d/FILEID/view
+    to:
+      https://drive.google.com/uc?export=view&id=FILEID
+
+    Instagram: open your post → right-click photo → "Copy image address"
+    Imgur: upload → right-click → "Copy image address"
+    ================================================================
+    -->
+    <img
+      class="hero-photo"
+      src="YOUR_PHOTO_URL_HERE"
+      alt="Aysha Manaal Zawahir"
+      onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+    />
+    <div class="hero-photo-placeholder" style="display:none">
+      <div style="font-size:2.5rem;opacity:.2">◻</div>
+      <div style="font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;opacity:.38;text-align:center;max-width:180px;line-height:1.7">Replace YOUR_PHOTO_URL_HERE above</div>
+    </div>
+    <div class="hero-right-label">Portfolio 2025</div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section about-sec" id="about">
+  <div class="section-inner">
+    <div class="lbl reveal">About Me</div>
+    <h2 class="hdg reveal">Turning brands into <em>movements</em></h2>
+    <div class="about-grid">
+      <div>
+        <div class="about-body reveal">
+          <p>I'm a Social Media & Digital Marketing Specialist with 5+ years of experience building brand presence across the Middle East and beyond. I blend creative storytelling with performance marketing to help brands connect authentically with their audiences and drive real business results.</p>
+          <p>My work spans strategy, content creation, paid advertising, influencer partnerships, and analytics — always anchored in a deep understanding of the brand's unique voice and the audience's evolving expectations.</p>
+          <p>I've had the privilege of working with 36+ brands across industries including luxury, education, F&B, real estate, and technology.</p>
+        </div>
+        <div class="lang-block reveal">
+          <div class="lang-lbl">Languages</div>
+          <div class="lang-txt">English (Fluent) · Arabic (Conversational) · Sinhala (Native)</div>
+        </div>
+      </div>
+      <div>
+        <div class="skills-box reveal">
+          <div class="skill-row"><span class="sk-num">01</span><span class="sk-name">Social Media Strategy & Management</span></div>
+          <div class="skill-row"><span class="sk-num">02</span><span class="sk-name">Paid Ads — Meta, Google, TikTok</span></div>
+          <div class="skill-row"><span class="sk-num">03</span><span class="sk-name">Content Creation & Copywriting</span></div>
+          <div class="skill-row"><span class="sk-num">04</span><span class="sk-name">Analytics & Reporting</span></div>
+          <div class="skill-row"><span class="sk-num">05</span><span class="sk-name">Client Servicing & Retention</span></div>
+          <div class="skill-row"><span class="sk-num">06</span><span class="sk-name">Production & Set Design</span></div>
+          <div class="skill-row"><span class="sk-num">07</span><span class="sk-name">Influencer Management</span></div>
+          <div class="skill-row"><span class="sk-num">08</span><span class="sk-name">Community Management</span></div>
+          <div class="skill-row"><span class="sk-num">09</span><span class="sk-name">Scriptwriting</span></div>
+        </div>
+        <div class="tools-lbl">Tools</div>
+        <div class="tools-wrap reveal">
+          <span class="tool-tag">Canva</span><span class="tool-tag">Hootsuite</span><span class="tool-tag">Zoho</span>
+          <span class="tool-tag">Adobe</span><span class="tool-tag">Meta Ads</span><span class="tool-tag">Google Ads</span>
+          <span class="tool-tag">Trello</span><span class="tool-tag">Notion</span><span class="tool-tag">Planable</span>
+          <span class="tool-tag">Slack</span><span class="tool-tag">Scribe</span>
+        </div>
+      </div>
+    </div>
+    <div class="reveal" style="display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--border);border:1px solid var(--border);margin-top:60px;">
+      <div style="background:var(--bg2);padding:32px 28px;text-align:center;">
+        <div style="font-family:'Playfair Display',serif;font-size:2.8rem;font-weight:900;color:var(--rose);line-height:1;">5+</div>
+        <div style="font-family:'DM Mono',monospace;font-size:.54rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-top:8px;">Years Experience</div>
+      </div>
+      <div style="background:var(--bg2);padding:32px 28px;text-align:center;">
+        <div style="font-family:'Playfair Display',serif;font-size:2.8rem;font-weight:900;color:var(--rose);line-height:1;">36+</div>
+        <div style="font-family:'DM Mono',monospace;font-size:.54rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-top:8px;">Brands Worked With</div>
+      </div>
+      <div style="background:var(--bg2);padding:32px 28px;text-align:center;">
+        <div style="font-family:'Playfair Display',serif;font-size:2.8rem;font-weight:900;color:var(--rose);line-height:1;">5</div>
+        <div style="font-family:'DM Mono',monospace;font-size:.54rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-top:8px;">Countries</div>
+      </div>
+      <div style="background:var(--bg2);padding:32px 28px;text-align:center;">
+        <div style="font-family:'Playfair Display',serif;font-size:2.8rem;font-weight:900;color:var(--rose);line-height:1;">3M+</div>
+        <div style="font-family:'DM Mono',monospace;font-size:.54rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-top:8px;">Reach Generated</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED WORK -->
+<section class="section khalid-sec" id="work">
+  <div class="section-inner">
+    <div class="lbl reveal">Featured Work</div>
+    <h2 class="hdg reveal">Khalid Al Ameri — <em>Social Media Management</em></h2>
+    <div class="kh-intro">
+      <div>
+        <div class="kh-desc reveal">
+          <strong>Khalid Al Ameri</strong> is one of the UAE's most prominent social media personalities, known for his authentic storytelling and family content. I managed his digital presence across platforms, developing a consistent content strategy that deepened audience connection while expanding reach.
+          <br><br>Managing a high-profile personal brand required balancing authenticity with strategic growth — crafting content that felt personal while performing at scale.
+        </div>
+      </div>
+      <div class="kh-platforms reveal">
+        <div class="pl-row"><span class="pl-name">Instagram</span><span class="pl-badge badge-managed">Managed</span></div>
+        <div class="pl-row"><span class="pl-name">TikTok</span><span class="pl-badge badge-managed">Managed</span></div>
+        <div class="pl-row"><span class="pl-name">YouTube</span><span class="pl-badge badge-managed">Managed</span></div>
+        <div class="pl-row"><span class="pl-name">Facebook</span><span class="pl-badge badge-managed">Managed</span></div>
+        <div class="pl-row"><span class="pl-name">LinkedIn</span><span class="pl-badge badge-linkedin">Supported</span></div>
+      </div>
+    </div>
+
+    <div class="li-note reveal">
+      <div class="li-icon">ℹ</div>
+      <div class="li-txt">Due to <strong>NDA and confidentiality agreements</strong>, specific metrics and content from this role are not publicly shareable. Content samples are available upon request during a private consultation.</div>
+    </div>
+
+    <!--
+    ================================================================
+    VIDEO / REEL CARDS
+    For each card:
+      1. Replace YOUR_THUMBNAIL_URL with a thumbnail image link
+      2. Replace YOUR_VIDEO_URL with the Instagram/TikTok/YouTube link
+
+    Thumbnail tip: On Instagram, open the reel → right-click the
+    preview image → "Copy image address" to get a direct image URL.
+    ================================================================
+    -->
+    <div class="vid-cat reveal">
+      <div class="cat-lbl">Instagram & TikTok Reels</div>
+      <div class="vid-row">
+
+        <div class="vid-card">
+          <a class="vid-thumb" href="YOUR_VIDEO_URL_1" target="_blank">
+            <img src="YOUR_THUMBNAIL_URL_1" alt="Reel 1" onerror="this.parentElement.style.background='#2a2826'"/>
+            <div class="vid-thumb-overlay">
+              <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+            </div>
+          </a>
+          <div class="vid-info">
+            <div class="vc-platform">Instagram Reels</div>
+            <div class="vc-title">Your reel title here</div>
+            <a class="vc-link" href="YOUR_VIDEO_URL_1" target="_blank">Watch <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          </div>
+        </div>
+
+        <div class="vid-card">
+          <a class="vid-thumb" href="YOUR_VIDEO_URL_2" target="_blank">
+            <img src="YOUR_THUMBNAIL_URL_2" alt="Reel 2" onerror="this.parentElement.style.background='#2a2826'"/>
+            <div class="vid-thumb-overlay">
+              <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+            </div>
+          </a>
+          <div class="vid-info">
+            <div class="vc-platform">TikTok</div>
+            <div class="vc-title">Your reel title here</div>
+            <a class="vc-link" href="YOUR_VIDEO_URL_2" target="_blank">Watch <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!-- Copy the vid-cat block above to add more reel sections -->
+  </div>
+</section>
+
+<!-- CLIENTS -->
+<section class="section clients-sec" id="clients">
+  <div class="section-inner">
+    <div class="lbl reveal">Client Portfolio</div>
+    <h2 class="hdg reveal">Brands I've <em>worked with</em></h2>
+    <p class="client-intro reveal">A selection of the 36+ brands I've had the privilege to grow — spanning luxury, F&B, education, real estate, and technology across the UAE, Sri Lanka, and beyond.</p>
+
+    <!--
+    ================================================================
+    CLIENT LOGOS GRID
+    For each logo-cell, replace YOUR_LOGO_URL with the logo image link.
+
+    Google Drive URL format:
+      From: https://drive.google.com/file/d/FILEID/view
+      To:   https://drive.google.com/uc?export=view&id=FILEID
+
+    If a logo fails to load, the brand name text shows automatically.
+    To ADD more logos: copy any logo-cell block and paste it inside .logos-grid
+    To REMOVE a logo: delete the entire logo-cell block
+    ================================================================
+    -->
+    <div class="logos-grid reveal">
+
+      <div class="logo-cell">
+        <img class="logo-img" src="YOUR_LOGO_URL" alt="Khalid Al Ameri"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='block'"/>
+        <span class="logo-fallback" style="display:none">Khalid Al Ameri</span>
+      </div>
+
+      <div class="logo-cell">
+        <img class="logo-img" src="YOUR_LOGO_URL" alt="SofaClean"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='block'"/>
+        <span class="logo-fallback" style="display:none">SofaClean</span>
+      </div>
+
+      <div class="logo-cell">
+        <img class="logo-img" src="YOUR_LOGO_URL" alt="Imperial College"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='block'"/>
+        <span class="logo-fallback" style="display:none">Imperial College</span>
+      </div>
+
+      <div class="logo-cell">
+        <img class="logo-img" src="YOUR_LOGO_URL" alt="Craftcube"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='block'"/>
+        <span class="logo-fallback" style="display:none">Craftcube</span>
+      </div>
+
+      <div class="logo-cell">
+        <img class="logo-img" src="YOUR_LOGO_URL" alt="Cafe Divine Street"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='block'"/>
+        <span class="logo-fallback" style="display:none">Café Divine</span>
+      </div>
+
+      <div class="logo-cell">
+        <img class="logo-img" src="YOUR_LOGO_URL" alt="Sanji Caldera"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='block'"/>
+        <span class="logo-fallback" style="display:none">Sanji Caldera</span>
+      </div>
+
+      <!-- ADD MORE LOGOS: copy the block below, paste here, update URL and name -->
+      <!--
+      <div class="logo-cell">
+        <img class="logo-img" src="YOUR_LOGO_URL" alt="Brand Name"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='block'"/>
+        <span class="logo-fallback" style="display:none">Brand Name</span>
+      </div>
+      -->
+
+    </div>
+  </div>
+</section>
+
+<!-- CASE STUDIES -->
+<section class="section case-sec" id="cases">
+  <div class="section-inner">
+    <div class="lbl reveal">Case Studies</div>
+    <h2 class="hdg reveal">Work that <em>delivered</em></h2>
+
+    <div class="case-card reveal" onclick="toggleCase(this)">
+      <div class="case-hdr">
+        <div><div class="case-client">SofaClean</div><div class="case-industry">Home Services</div></div>
+        <div class="case-toggle">+</div>
+      </div>
+      <div class="case-body">
+        <div><div class="col-lbl">The Challenge</div><div class="col-body">SofaClean needed to build brand awareness in a competitive home services market and convert social media followers into paying customers.</div></div>
+        <div><div class="col-lbl">My Strategy</div><div class="col-body"><ul><li>Developed a before/after content series that showed tangible results</li><li>Built a community through engaging polls, tips, and home care content</li><li>Ran targeted Meta campaigns focused on UAE homeowners</li><li>Partnered with home decor influencers for authentic reach</li></ul></div></div>
+        <div><div class="col-lbl">Results</div><div class="col-body"><div class="res-item"><div class="res-num">220%</div><div class="res-desc">Increase in Instagram followers within 6 months</div></div><div class="res-item"><div class="res-num">3×</div><div class="res-desc">Growth in monthly bookings via social media referrals</div></div></div></div>
+      </div>
+    </div>
+
+    <div class="case-card reveal" onclick="toggleCase(this)">
+      <div class="case-hdr">
+        <div><div class="case-client">Café Divine Street</div><div class="case-industry">Food & Beverage</div></div>
+        <div class="case-toggle">+</div>
+      </div>
+      <div class="case-body">
+        <div><div class="col-lbl">The Challenge</div><div class="col-body">A new café needed to build a loyal local following, create buzz, and drive foot traffic in a saturated Dubai F&B market.</div></div>
+        <div><div class="col-lbl">My Strategy</div><div class="col-body"><ul><li>Created a distinctive visual identity for the café's social channels</li><li>Produced high-quality food and ambiance content in-house</li><li>Ran location-targeted Instagram and TikTok campaigns</li><li>Collaborated with local food bloggers for opening momentum</li></ul></div></div>
+        <div><div class="col-lbl">Results</div><div class="col-body"><div class="res-item"><div class="res-num">180%</div><div class="res-desc">Growth in Instagram engagement in the first 3 months</div></div><div class="res-item"><div class="res-num">40%</div><div class="res-desc">Increase in walk-in customers attributed to social discovery</div></div></div></div>
+      </div>
+    </div>
+
+    <div class="case-card reveal" onclick="toggleCase(this)">
+      <div class="case-hdr">
+        <div><div class="case-client">Imperial College</div><div class="case-industry">Education</div></div>
+        <div class="case-toggle">+</div>
+      </div>
+      <div class="case-body">
+        <div><div class="col-lbl">The Challenge</div><div class="col-body">Imperial College aimed to attract high-potential students, highlight its innovative programs, and strengthen its reputation as a global hub for research and entrepreneurship.</div></div>
+        <div><div class="col-lbl">My Strategy</div><div class="col-body"><ul><li>Created a content strategy highlighting student stories, research breakthroughs, and campus life</li><li>Partnered with alumni and student influencers for authentic testimonials</li><li>Developed interactive content — Q&A sessions, webinars, virtual campus tours</li><li>Ran targeted campaigns focused on STEM and business programs</li></ul></div></div>
+        <div><div class="col-lbl">Results</div><div class="col-body"><div class="res-item"><div class="res-num">45%</div><div class="res-desc">Increase in social media engagement with high participation in virtual events</div></div><div class="res-item"><div class="res-num">30%</div><div class="res-desc">Boost in website traffic and visibility for key programs</div></div></div></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section testi-sec" id="testimonials">
+  <div class="section-inner">
+    <div class="lbl reveal">Client Feedback</div>
+    <h2 class="hdg reveal">What clients <em>say</em></h2>
+    <p class="testi-intro reveal">I value building long-term partnerships. Here are a few words from clients who have trusted me to grow their brands.</p>
+    <div class="testi-grid reveal">
+      <div class="testi-card"><div class="testi-q">"</div><div class="testi-txt">Aysha is creative, professional, and understands how to translate business needs into engaging campaigns.</div><div class="testi-name">Fahdi Zuwaid</div><div class="testi-co">Craftcube Pvt. Ltd.</div></div>
+      <div class="testi-card"><div class="testi-q">"</div><div class="testi-txt">Aysha's creativity in social media and content creation consistently helped us strengthen our brand presence and generate quality leads.</div><div class="testi-name">Andriea Pereira</div><div class="testi-co">Country Manager, UAE — Sanji Caldera Associates</div></div>
+      <div class="testi-card"><div class="testi-q">"</div><div class="testi-txt">One of the best digital strategists I have worked with. Aysha walks the talk, and delivers high quality products that optimize usability, conversion, and improve customer experience.</div><div class="testi-name">Salman Rabith</div><div class="testi-co">SofaClean</div></div>
+      <div class="testi-card"><div class="testi-q">"</div><div class="testi-txt">Energetic and broad-minded Marketing — that's her! Detail oriented team player. On account of her mature approach to her responsibilities, I often thought of Manaal as a professional I could always rely upon to get the job done.</div><div class="testi-name">Shoaib Rabith</div><div class="testi-co">SofaClean</div></div>
+      <div class="testi-card"><div class="testi-q">"</div><div class="testi-txt">Aysha Manaal is one of the best in her field and is always willing to share best practices. She is always available to help us when needed, strives for excellence and is a valuable team player.</div><div class="testi-name">Ahamed Rasheed</div><div class="testi-co">Technology Client</div></div>
+      <div class="testi-card"><div class="testi-q">"</div><div class="testi-txt">She transformed our café's social media presence with creative content, eye-catching visuals, and engaging campaigns that truly captured the spirit of our brand.</div><div class="testi-name">Achindra Munaweera</div><div class="testi-co">Café Divine Street</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY ME -->
+<section class="section why-sec">
+  <div class="section-inner">
+    <div class="lbl reveal">Why Choose Me</div>
+    <h2 class="hdg reveal">Creativity meets <em>strategy</em></h2>
+    <p class="why-body reveal">I help brands transform their digital presence by blending creativity with strategy. From crafting engaging content and building strong social media communities to running data-driven campaigns that generate leads and sales, I focus on delivering measurable growth. My experience across diverse industries and regions has given me the ability to adapt quickly, understand unique brand voices, and create strategies that resonate with the right audiences. With every project, I bring dedication, consistency, and innovation — ensuring that the brands I work with not only stand out online but also achieve real business results.</p>
+    <div class="reveal" style="margin-bottom:48px;padding:32px 0;border-top:1px solid rgba(255,255,255,0.08);border-bottom:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;gap:40px;">
+      <div style="font-family:'Playfair Display',serif;font-size:3.5rem;color:var(--rose2);line-height:1;opacity:0.35;flex-shrink:0;">"</div>
+      <div style="font-family:'Playfair Display',serif;font-size:1.2rem;font-style:italic;color:#d4c8c0;line-height:1.65;max-width:680px;">Great content doesn't just inform — it makes people feel something, remember something, and act on something.</div>
+    </div>
+    <div class="why-tags reveal">
+      <span class="why-tag">Proven Results</span>
+      <span class="why-tag">Creativity Meets Strategy</span>
+      <span class="why-tag">Commitment to Excellence</span>
+      <span class="why-tag">Global Experience</span>
+      <span class="why-tag">Client-Centric Approach</span>
+      <span class="why-tag">Collaborative Partnership</span>
+    </div>
+  </div>
+</section>
+
+<!-- CTA / CONTACT -->
+<section class="cta-sec" id="contact">
+  <h2 class="cta-hdg">Let's create your<br><em>brand story together</em></h2>
+  <p class="cta-sub">Currently open to new projects and collaborations.</p>
+  <div class="cta-details">
+    <div class="cta-item"><span class="cta-item-lbl">Email</span><span class="cta-item-val"><a href="mailto:azawahir96@gmail.com">azawahir96@gmail.com</a></span></div>
+    <div class="cta-item"><span class="cta-item-lbl">Phone / WhatsApp</span><span class="cta-item-val"><a href="tel:+971561209503">+971 56 120 9503</a></span></div>
+    <div class="cta-item"><span class="cta-item-lbl">Instagram</span><span class="cta-item-val"><a href="https://instagram.com/_manaal_96" target="_blank">@_manaal_96</a></span></div>
+    <div class="cta-item"><span class="cta-item-lbl">Also on Instagram</span><span class="cta-item-val"><a href="https://instagram.com/bztheticcs" target="_blank">@bztheticcs</a></span></div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-name">Aysha Manaal Zawahir</div>
+  <div class="foot-copy">© 2025 · Social Media & Digital Marketing Specialist · Dubai, UAE</div>
+</footer>
+
+<script>
+const cur=document.getElementById('cursor'),ring=document.getElementById('ring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
+(function tick(){rx+=(mx-rx)*.13;ry+=(my-ry)*.13;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(tick);})();
+document.querySelectorAll('a,button,.case-hdr,.tool-tag,.logo-cell,.vid-card').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cur.style.width='17px';cur.style.height='17px';ring.style.width='50px';ring.style.height='50px';});
+  el.addEventListener('mouseleave',()=>{cur.style.width='10px';cur.style.height='10px';ring.style.width='36px';ring.style.height='36px';});
+});
+const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:.07});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+function toggleCase(card){const open=card.classList.contains('open');document.querySelectorAll('.case-card.open').forEach(c=>c.classList.remove('open'));if(!open)card.classList.add('open');}
+</script>
+</body>
+</html>
